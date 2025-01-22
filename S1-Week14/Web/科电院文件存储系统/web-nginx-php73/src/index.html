@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科电院文件存储系统</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>科电院文件存储系统</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="fileInput" name="files[]" multiple>
+            <button type="submit">上传文件</button>
+        </form>
+        <div id="fileList">
+            <h2>文件列表</h2>
+            <ul id="files"></ul>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

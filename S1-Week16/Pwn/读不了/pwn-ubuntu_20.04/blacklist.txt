@@ -1,0 +1,4 @@
+sh
+cat
+tac
+rev
