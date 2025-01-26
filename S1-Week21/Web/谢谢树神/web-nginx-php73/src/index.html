@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赞美树神</title>
+    <style>
+        #randomButton {
+            position: absolute;
+            padding: 10px 20px;
+            background-color: #af4c4c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="randomButton">太强了树神！</button>
+    <script>
+        alert('点击按钮，赞美一千次树神，即可获得flag');
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function moveButton() {
+            const button = document.getElementById('randomButton');
+            const x = Math.floor(Math.random() * (window.innerWidth - button.offsetWidth));
+            const y = Math.floor(Math.random() * (window.innerHeight - button.offsetHeight));
+            button.style.left = x + 'px';
+            button.style.top = y + 'px';
+            button.style.backgroundColor = getRandomColor();
+        }
+
+        document.getElementById('randomButton').addEventListener('click', function() {
+            fetch('check.php')
+                .then(response => response.text())
+                .then(data => {
+                    if (data.trim() !== 'index.html') {
+                        window.location.href = data;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+                moveButton();
+        });
+
+        // 初始位置
+        moveButton();
+    </script>
+</body>
+</html>
